@@ -26,12 +26,21 @@ export default async function AdminPage() {
           <h1 className="text-2xl font-semibold">Waitlist</h1>
           <p className="text-ink/60 text-sm">{rows.length} signups</p>
         </div>
-        <a
-          href="/admin/export.csv"
-          className="rounded-full bg-ink text-paper px-5 py-2 text-sm font-medium hover:bg-ink/85 transition"
-        >
-          Download CSV
-        </a>
+                <div className="flex items-center gap-3">
+          <a
+            href="/admin/newsletter"
+            className="text-sm text-ink/70 hover:text-ink underline"
+          >
+            Compose newsletter →
+          </a>
+          <a
+            href="/admin/export.csv"
+            className="rounded-full bg-ink text-paper px-5 py-2 text-sm font-medium hover:bg-ink/85 transition"
+          >
+            Download CSV
+          </a>
+        </div>
+
       </div>
 
       <div className="overflow-x-auto border border-ink/10 rounded-xl">

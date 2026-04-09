@@ -111,6 +111,26 @@ supabase/schema.sql       # One-time DB setup
 6. Visit <http://localhost:3000/admin>, log in, confirm the row appears, and
    click **Download CSV**.
 
+## Sending the weekly newsletter
+
+`/admin/newsletter` is a password-gated compose page for the weekly "What
+Changed in AI" email. Subject + plain-text body, preview toggle, type-`SEND`
+confirm, then it broadcasts to every non-unsubscribed subscriber via Resend's
+batch API. Past issues are listed underneath.
+
+**One-time setup before the first send:**
+
+1. Open Supabase → SQL Editor → New query, paste
+   [`supabase/schema_newsletter.sql`](supabase/schema_newsletter.sql), and run
+   it. This adds `unsubscribed` and `unsubscribe_token` to the `waitlist` table
+   and creates a `newsletters` table for past issues.
+2. In Vercel → Settings → Environment Variables, add
+   `NEXT_PUBLIC_SITE_URL` (e.g. `https://whatchanged.co`). This is used to build
+   the personalized unsubscribe link in every email. Redeploy after saving.
+
+Subscribers can unsubscribe via a link in every email; the public
+`/unsubscribe?token=...` page flips the flag and shows a confirmation.
+
 ## What's next
 
 When the waitlist proves there's demand, the next milestone adds:

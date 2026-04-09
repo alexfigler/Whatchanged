@@ -21,4 +21,16 @@ export type WaitlistRow = {
   industry: string | null;
   experience: string | null;
   challenge: string | null;
+  unsubscribed: boolean;
+  unsubscribe_token: string;
 };
+
+export type Newsletter = {
+  id: string;
+  created_at: string;
+  subject: string;
+  body: string;
+  sent_at: string | null;
+  recipient_count: number | null;
+};
+
